@@ -1,0 +1,543 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43A703D2186912B400E39CBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A703D1186912B400E39CBE /* Foundation.framework */; };
+		43A703D4186912B400E39CBE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A703D3186912B400E39CBE /* CoreGraphics.framework */; };
+		43A703D6186912B400E39CBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A703D5186912B400E39CBE /* UIKit.framework */; };
+		43A703DC186912B400E39CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43A703DA186912B400E39CBE /* InfoPlist.strings */; };
+		43A703DE186912B400E39CBE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A703DD186912B400E39CBE /* main.m */; };
+		43A703E2186912B400E39CBE /* RACAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A703E1186912B400E39CBE /* RACAppDelegate.m */; };
+		43A703E4186912B400E39CBE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43A703E3186912B400E39CBE /* Images.xcassets */; };
+		43A703EB186912B400E39CBE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A703EA186912B400E39CBE /* XCTest.framework */; };
+		43A703EC186912B400E39CBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A703D1186912B400E39CBE /* Foundation.framework */; };
+		43A703ED186912B500E39CBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A703D5186912B400E39CBE /* UIKit.framework */; };
+		43A703F5186912B500E39CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43A703F3186912B500E39CBE /* InfoPlist.strings */; };
+		43A703F7186912B500E39CBE /* ResplendentAmazonControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A703F6186912B500E39CBE /* ResplendentAmazonControllerTests.m */; };
+		43A704101869137300E39CBE /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A704091869137300E39CBE /* AWSiOSSDK.framework */; };
+		43A704111869137300E39CBE /* RACAmazonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A7040D1869137300E39CBE /* RACAmazonController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		43A703EE186912B500E39CBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43A703C6186912B400E39CBE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43A703CD186912B400E39CBE;
+			remoteInfo = ResplendentAmazonController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		43A703CE186912B400E39CBE /* ResplendentAmazonController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResplendentAmazonController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43A703D1186912B400E39CBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		43A703D3186912B400E39CBE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		43A703D5186912B400E39CBE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		43A703D9186912B400E39CBE /* ResplendentAmazonController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ResplendentAmazonController-Info.plist"; sourceTree = "<group>"; };
+		43A703DB186912B400E39CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		43A703DD186912B400E39CBE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		43A703DF186912B400E39CBE /* ResplendentAmazonController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ResplendentAmazonController-Prefix.pch"; sourceTree = "<group>"; };
+		43A703E0186912B400E39CBE /* RACAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACAppDelegate.h; sourceTree = "<group>"; };
+		43A703E1186912B400E39CBE /* RACAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RACAppDelegate.m; sourceTree = "<group>"; };
+		43A703E3186912B400E39CBE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		43A703E9186912B400E39CBE /* ResplendentAmazonControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResplendentAmazonControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		43A703EA186912B400E39CBE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		43A703F2186912B500E39CBE /* ResplendentAmazonControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ResplendentAmazonControllerTests-Info.plist"; sourceTree = "<group>"; };
+		43A703F4186912B500E39CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		43A703F6186912B500E39CBE /* ResplendentAmazonControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResplendentAmazonControllerTests.m; sourceTree = "<group>"; };
+		43A704091869137300E39CBE /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSiOSSDK.framework; sourceTree = "<group>"; };
+		43A7040C1869137300E39CBE /* RACAmazonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACAmazonController.h; sourceTree = "<group>"; };
+		43A7040D1869137300E39CBE /* RACAmazonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACAmazonController.m; sourceTree = "<group>"; };
+		43A7040E1869137300E39CBE /* RUAmazonControllerProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUAmazonControllerProtocols.h; sourceTree = "<group>"; };
+		43A704131869139D00E39CBE /* RUConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUConstants.h; sourceTree = "<group>"; };
+		43A70414186913C400E39CBE /* RUDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RUDebug.h; sourceTree = "<group>"; };
+		43A70415186913C400E39CBE /* RUDLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RUDLog.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		43A703CB186912B400E39CBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43A703D4186912B400E39CBE /* CoreGraphics.framework in Frameworks */,
+				43A703D6186912B400E39CBE /* UIKit.framework in Frameworks */,
+				43A703D2186912B400E39CBE /* Foundation.framework in Frameworks */,
+				43A704101869137300E39CBE /* AWSiOSSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43A703E6186912B400E39CBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43A703EB186912B400E39CBE /* XCTest.framework in Frameworks */,
+				43A703ED186912B500E39CBE /* UIKit.framework in Frameworks */,
+				43A703EC186912B400E39CBE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43A703C5186912B400E39CBE = {
+			isa = PBXGroup;
+			children = (
+				43A703D7186912B400E39CBE /* ResplendentAmazonController */,
+				43A703F0186912B500E39CBE /* ResplendentAmazonControllerTests */,
+				43A703D0186912B400E39CBE /* Frameworks */,
+				43A703CF186912B400E39CBE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43A703CF186912B400E39CBE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43A703CE186912B400E39CBE /* ResplendentAmazonController.app */,
+				43A703E9186912B400E39CBE /* ResplendentAmazonControllerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43A703D0186912B400E39CBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				43A703D1186912B400E39CBE /* Foundation.framework */,
+				43A703D3186912B400E39CBE /* CoreGraphics.framework */,
+				43A703D5186912B400E39CBE /* UIKit.framework */,
+				43A703EA186912B400E39CBE /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43A703D7186912B400E39CBE /* ResplendentAmazonController */ = {
+			isa = PBXGroup;
+			children = (
+				43A704061869137300E39CBE /* Code */,
+				43A703E0186912B400E39CBE /* RACAppDelegate.h */,
+				43A703E1186912B400E39CBE /* RACAppDelegate.m */,
+				43A703E3186912B400E39CBE /* Images.xcassets */,
+				43A703D8186912B400E39CBE /* Supporting Files */,
+			);
+			path = ResplendentAmazonController;
+			sourceTree = "<group>";
+		};
+		43A703D8186912B400E39CBE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43A703D9186912B400E39CBE /* ResplendentAmazonController-Info.plist */,
+				43A703DA186912B400E39CBE /* InfoPlist.strings */,
+				43A703DD186912B400E39CBE /* main.m */,
+				43A703DF186912B400E39CBE /* ResplendentAmazonController-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43A703F0186912B500E39CBE /* ResplendentAmazonControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				43A703F6186912B500E39CBE /* ResplendentAmazonControllerTests.m */,
+				43A703F1186912B500E39CBE /* Supporting Files */,
+			);
+			path = ResplendentAmazonControllerTests;
+			sourceTree = "<group>";
+		};
+		43A703F1186912B500E39CBE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43A703F2186912B500E39CBE /* ResplendentAmazonControllerTests-Info.plist */,
+				43A703F3186912B500E39CBE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43A704061869137300E39CBE /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				43A704071869137300E39CBE /* Framework */,
+				43A7040A1869137300E39CBE /* ResplendentAmazonController */,
+				43A7040F1869137300E39CBE /* ResplendentUtilities */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		43A704071869137300E39CBE /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				43A704081869137300E39CBE /* Amazon */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		43A704081869137300E39CBE /* Amazon */ = {
+			isa = PBXGroup;
+			children = (
+				43A704091869137300E39CBE /* AWSiOSSDK.framework */,
+			);
+			path = Amazon;
+			sourceTree = "<group>";
+		};
+		43A7040A1869137300E39CBE /* ResplendentAmazonController */ = {
+			isa = PBXGroup;
+			children = (
+				43A7040B1869137300E39CBE /* AmazonController */,
+			);
+			path = ResplendentAmazonController;
+			sourceTree = "<group>";
+		};
+		43A7040B1869137300E39CBE /* AmazonController */ = {
+			isa = PBXGroup;
+			children = (
+				43A7040C1869137300E39CBE /* RACAmazonController.h */,
+				43A7040D1869137300E39CBE /* RACAmazonController.m */,
+				43A7040E1869137300E39CBE /* RUAmazonControllerProtocols.h */,
+			);
+			path = AmazonController;
+			sourceTree = "<group>";
+		};
+		43A7040F1869137300E39CBE /* ResplendentUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				43A704121869139D00E39CBE /* Misc */,
+			);
+			path = ResplendentUtilities;
+			sourceTree = "<group>";
+		};
+		43A704121869139D00E39CBE /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				43A704131869139D00E39CBE /* RUConstants.h */,
+				43A70414186913C400E39CBE /* RUDebug.h */,
+				43A70415186913C400E39CBE /* RUDLog.h */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43A703CD186912B400E39CBE /* ResplendentAmazonController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43A703FA186912B500E39CBE /* Build configuration list for PBXNativeTarget "ResplendentAmazonController" */;
+			buildPhases = (
+				43A703CA186912B400E39CBE /* Sources */,
+				43A703CB186912B400E39CBE /* Frameworks */,
+				43A703CC186912B400E39CBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ResplendentAmazonController;
+			productName = ResplendentAmazonController;
+			productReference = 43A703CE186912B400E39CBE /* ResplendentAmazonController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		43A703E8186912B400E39CBE /* ResplendentAmazonControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43A703FD186912B500E39CBE /* Build configuration list for PBXNativeTarget "ResplendentAmazonControllerTests" */;
+			buildPhases = (
+				43A703E5186912B400E39CBE /* Sources */,
+				43A703E6186912B400E39CBE /* Frameworks */,
+				43A703E7186912B400E39CBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43A703EF186912B500E39CBE /* PBXTargetDependency */,
+			);
+			name = ResplendentAmazonControllerTests;
+			productName = ResplendentAmazonControllerTests;
+			productReference = 43A703E9186912B400E39CBE /* ResplendentAmazonControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43A703C6186912B400E39CBE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RAC;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Resplendent;
+				TargetAttributes = {
+					43A703E8186912B400E39CBE = {
+						TestTargetID = 43A703CD186912B400E39CBE;
+					};
+				};
+			};
+			buildConfigurationList = 43A703C9186912B400E39CBE /* Build configuration list for PBXProject "ResplendentAmazonController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 43A703C5186912B400E39CBE;
+			productRefGroup = 43A703CF186912B400E39CBE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43A703CD186912B400E39CBE /* ResplendentAmazonController */,
+				43A703E8186912B400E39CBE /* ResplendentAmazonControllerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43A703CC186912B400E39CBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43A703DC186912B400E39CBE /* InfoPlist.strings in Resources */,
+				43A703E4186912B400E39CBE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43A703E7186912B400E39CBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43A703F5186912B500E39CBE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43A703CA186912B400E39CBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43A703DE186912B400E39CBE /* main.m in Sources */,
+				43A704111869137300E39CBE /* RACAmazonController.m in Sources */,
+				43A703E2186912B400E39CBE /* RACAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43A703E5186912B400E39CBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43A703F7186912B500E39CBE /* ResplendentAmazonControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43A703EF186912B500E39CBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43A703CD186912B400E39CBE /* ResplendentAmazonController */;
+			targetProxy = 43A703EE186912B500E39CBE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		43A703DA186912B400E39CBE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43A703DB186912B400E39CBE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		43A703F3186912B500E39CBE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43A703F4186912B500E39CBE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		43A703F8186912B500E39CBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43A703F9186912B500E39CBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43A703FB186912B500E39CBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Benjamin/Documents/Repos/Resplendent/ResplendentAmazonController/ResplendentAmazonController/Code/Framework/Amazon,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ResplendentAmazonController/ResplendentAmazonController-Prefix.pch";
+				INFOPLIST_FILE = "ResplendentAmazonController/ResplendentAmazonController-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		43A703FC186912B500E39CBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Benjamin/Documents/Repos/Resplendent/ResplendentAmazonController/ResplendentAmazonController/Code/Framework/Amazon,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ResplendentAmazonController/ResplendentAmazonController-Prefix.pch";
+				INFOPLIST_FILE = "ResplendentAmazonController/ResplendentAmazonController-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		43A703FE186912B500E39CBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ResplendentAmazonController.app/ResplendentAmazonController";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ResplendentAmazonController/ResplendentAmazonController-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ResplendentAmazonControllerTests/ResplendentAmazonControllerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		43A703FF186912B500E39CBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ResplendentAmazonController.app/ResplendentAmazonController";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ResplendentAmazonController/ResplendentAmazonController-Prefix.pch";
+				INFOPLIST_FILE = "ResplendentAmazonControllerTests/ResplendentAmazonControllerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43A703C9186912B400E39CBE /* Build configuration list for PBXProject "ResplendentAmazonController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43A703F8186912B500E39CBE /* Debug */,
+				43A703F9186912B500E39CBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43A703FA186912B500E39CBE /* Build configuration list for PBXNativeTarget "ResplendentAmazonController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43A703FB186912B500E39CBE /* Debug */,
+				43A703FC186912B500E39CBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43A703FD186912B500E39CBE /* Build configuration list for PBXNativeTarget "ResplendentAmazonControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43A703FE186912B500E39CBE /* Debug */,
+				43A703FF186912B500E39CBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 43A703C6186912B400E39CBE /* Project object */;
+}

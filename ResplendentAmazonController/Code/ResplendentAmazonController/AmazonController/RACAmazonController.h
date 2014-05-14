@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "RACAmazonControllerProtocols.h"
-#import <AWSiOSSDK/S3/AmazonS3Client.h>
+
+#import <AWSS3/AWSS3.h>
 
 
 

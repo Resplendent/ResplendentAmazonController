@@ -126,6 +126,8 @@ NSString* const kRACAmazonController_NotificationName_UploadImageRequest_DidFail
 -(void)applyImageData:(NSData *)imageData toRequestAndSend:(AWSS3PutObjectRequest *)request
 {
 	[request setBody:imageData];
+	[request setContentLength:@(imageData.length)];
+
 	[self sendRequest:request];
 }
 

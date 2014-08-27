@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RUAmazonControllerProtocols.h"
-#import <AWSiOSSDK/S3/AmazonS3Client.h>
 
-@interface RACAmazonController : NSObject <AmazonServiceRequestDelegate>
-{
-    AmazonS3Client* _amazonS3Client;
-}
+#import "RUNotifications.h"
 
-@property (nonatomic, assign) id<RUAmazonControllerDelegate> delegate;
+#import "AWSCore.h"
+#import "S3.h"
+
+
+
+
+
+@interface RACAmazonController : NSObject
 
 //Must be overloaded by a subclass
 @property (nonatomic, readonly) NSString* accessKey;
@@ -25,15 +27,27 @@
 //Can be overloaded, by default will be image/png
 @property (nonatomic, readonly) NSString* imageRequestContentType;
 
--(S3PutObjectRequest*)newImagePutRequestWithImageName:(NSString*)imageName;
--(void)sendRequest:(S3PutObjectRequest *)request withCurrentSettingsAppliedToImage:(UIImage*)image;
+//-(void)sendRequest:(AWSS3PutObjectRequest *)request withImage:(UIImage*)image;
 
--(S3PutObjectRequest*)uploadImage:(UIImage*)image imageName:(NSString*)imageName;
--(S3PutObjectRequest*)uploadImageWithData:(NSData*)imageData imageName:(NSString*)imageName;
+-(AWSS3PutObjectRequest*)uploadImage:(UIImage*)image imagePath:(NSString*)imagePath;
+-(AWSS3PutObjectRequest*)uploadImageWithData:(NSData*)imageData imagePath:(NSString*)imagePath;
 
--(void)sendRequest:(S3PutObjectRequest*)request;
+//Thread safe
+-(void)sendRequest:(AWSS3PutObjectRequest*)request;
 
 //returns name of photo in amazon bucket
--(NSURL*)imageURLForImageName:(NSString*)imageName;
+-(NSURL*)imageURLForImagePath:(NSString*)imagePath;
+
+@end
+
+
+
+
+
+@interface NSObject (RACAmazonControllerNotifications)
+
+//Notification's object will be request, which is an instance of AWSS3PutObjectRequest.
+kRUNotifications_Synthesize_NotificationReadonlySetWithSelectorClearProperty(r,R,egisteredForNotification_RACAmazonController_UploadImageRequest_DidFinish)
+kRUNotifications_Synthesize_NotificationReadonlySetWithSelectorClearProperty(r,R,egisteredForNotification_RACAmazonController_UploadImageRequest_DidFail)
 
 @end

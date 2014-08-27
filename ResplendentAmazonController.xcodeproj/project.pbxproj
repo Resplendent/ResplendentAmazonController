@@ -19,8 +19,8 @@
 		43A703ED186912B500E39CBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A703D5186912B400E39CBE /* UIKit.framework */; };
 		43A703F5186912B500E39CBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43A703F3186912B500E39CBE /* InfoPlist.strings */; };
 		43A703F7186912B500E39CBE /* ResplendentAmazonControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A703F6186912B500E39CBE /* ResplendentAmazonControllerTests.m */; };
-		43A704101869137300E39CBE /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A704091869137300E39CBE /* AWSiOSSDK.framework */; };
 		43A704111869137300E39CBE /* RACAmazonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A7040D1869137300E39CBE /* RACAmazonController.m */; };
+		43CFBCEB1992F3B70025399E /* RUClassOrNilUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CFBCE51992F3B70025399E /* RUClassOrNilUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43868B6B1922EB5E0018514A /* RACAmazonControllerProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACAmazonControllerProtocols.h; sourceTree = "<group>"; };
 		43A703CE186912B400E39CBE /* ResplendentAmazonController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResplendentAmazonController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43A703D1186912B400E39CBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		43A703D3186912B400E39CBE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -50,13 +51,15 @@
 		43A703F2186912B500E39CBE /* ResplendentAmazonControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ResplendentAmazonControllerTests-Info.plist"; sourceTree = "<group>"; };
 		43A703F4186912B500E39CBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43A703F6186912B500E39CBE /* ResplendentAmazonControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResplendentAmazonControllerTests.m; sourceTree = "<group>"; };
-		43A704091869137300E39CBE /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSiOSSDK.framework; sourceTree = "<group>"; };
 		43A7040C1869137300E39CBE /* RACAmazonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACAmazonController.h; sourceTree = "<group>"; };
 		43A7040D1869137300E39CBE /* RACAmazonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACAmazonController.m; sourceTree = "<group>"; };
-		43A7040E1869137300E39CBE /* RUAmazonControllerProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUAmazonControllerProtocols.h; sourceTree = "<group>"; };
-		43A704131869139D00E39CBE /* RUConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUConstants.h; sourceTree = "<group>"; };
-		43A70414186913C400E39CBE /* RUDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RUDebug.h; sourceTree = "<group>"; };
-		43A70415186913C400E39CBE /* RUDLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RUDLog.h; sourceTree = "<group>"; };
+		43CFBCE41992F3B70025399E /* RUClassOrNilUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUClassOrNilUtil.h; sourceTree = "<group>"; };
+		43CFBCE51992F3B70025399E /* RUClassOrNilUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RUClassOrNilUtil.m; sourceTree = "<group>"; };
+		43CFBCE61992F3B70025399E /* RUConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUConstants.h; sourceTree = "<group>"; };
+		43CFBCE71992F3B70025399E /* RUDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDebug.h; sourceTree = "<group>"; };
+		43CFBCE81992F3B70025399E /* RUDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUDLog.h; sourceTree = "<group>"; };
+		43CFBCE91992F3B70025399E /* RUNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUNotifications.h; sourceTree = "<group>"; };
+		43CFBCEA1992F3B70025399E /* RUSynthesizeAssociatedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUSynthesizeAssociatedObjects.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +70,6 @@
 				43A703D4186912B400E39CBE /* CoreGraphics.framework in Frameworks */,
 				43A703D6186912B400E39CBE /* UIKit.framework in Frameworks */,
 				43A703D2186912B400E39CBE /* Foundation.framework in Frameworks */,
-				43A704101869137300E39CBE /* AWSiOSSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,27 +160,10 @@
 		43A704061869137300E39CBE /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				43A704071869137300E39CBE /* Framework */,
 				43A7040A1869137300E39CBE /* ResplendentAmazonController */,
-				43A7040F1869137300E39CBE /* ResplendentUtilities */,
+				43CFBCE21992F3B70025399E /* ResplendentUtilities */,
 			);
 			path = Code;
-			sourceTree = "<group>";
-		};
-		43A704071869137300E39CBE /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				43A704081869137300E39CBE /* Amazon */,
-			);
-			path = Framework;
-			sourceTree = "<group>";
-		};
-		43A704081869137300E39CBE /* Amazon */ = {
-			isa = PBXGroup;
-			children = (
-				43A704091869137300E39CBE /* AWSiOSSDK.framework */,
-			);
-			path = Amazon;
 			sourceTree = "<group>";
 		};
 		43A7040A1869137300E39CBE /* ResplendentAmazonController */ = {
@@ -194,25 +179,29 @@
 			children = (
 				43A7040C1869137300E39CBE /* RACAmazonController.h */,
 				43A7040D1869137300E39CBE /* RACAmazonController.m */,
-				43A7040E1869137300E39CBE /* RUAmazonControllerProtocols.h */,
+				43868B6B1922EB5E0018514A /* RACAmazonControllerProtocols.h */,
 			);
 			path = AmazonController;
 			sourceTree = "<group>";
 		};
-		43A7040F1869137300E39CBE /* ResplendentUtilities */ = {
+		43CFBCE21992F3B70025399E /* ResplendentUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				43A704121869139D00E39CBE /* Misc */,
+				43CFBCE31992F3B70025399E /* Misc */,
 			);
 			path = ResplendentUtilities;
 			sourceTree = "<group>";
 		};
-		43A704121869139D00E39CBE /* Misc */ = {
+		43CFBCE31992F3B70025399E /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				43A704131869139D00E39CBE /* RUConstants.h */,
-				43A70414186913C400E39CBE /* RUDebug.h */,
-				43A70415186913C400E39CBE /* RUDLog.h */,
+				43CFBCE41992F3B70025399E /* RUClassOrNilUtil.h */,
+				43CFBCE51992F3B70025399E /* RUClassOrNilUtil.m */,
+				43CFBCE61992F3B70025399E /* RUConstants.h */,
+				43CFBCE71992F3B70025399E /* RUDebug.h */,
+				43CFBCE81992F3B70025399E /* RUDLog.h */,
+				43CFBCE91992F3B70025399E /* RUNotifications.h */,
+				43CFBCEA1992F3B70025399E /* RUSynthesizeAssociatedObjects.h */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -313,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43CFBCEB1992F3B70025399E /* RUClassOrNilUtil.m in Sources */,
 				43A703DE186912B400E39CBE /* main.m in Sources */,
 				43A704111869137300E39CBE /* RACAmazonController.m in Sources */,
 				43A703E2186912B400E39CBE /* RACAppDelegate.m in Sources */,

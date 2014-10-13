@@ -19,6 +19,8 @@
 
 @interface RACAmazonController : NSObject
 
+@property (nonatomic, readonly) AWSS3* s3Manager;
+
 //Must be overloaded by a subclass
 @property (nonatomic, readonly) NSString* accessKey;
 @property (nonatomic, readonly) NSString* secretKey;
@@ -36,7 +38,7 @@
 -(void)sendRequest:(AWSS3PutObjectRequest*)request;
 
 //returns name of photo in amazon bucket
--(NSURL*)imageURLForImagePath:(NSString*)imagePath;
+-(AWSS3GetObjectRequest*)getImageRequestForImagePath:(NSString*)imagePath;
 
 @end
 

@@ -29,7 +29,6 @@ NSString* const kRACAmazonController_NotificationName_UploadImageRequest_DidFail
 
 @property (nonatomic, readonly) NSOperationQueue* imageToDataOperationQueue;
 
-@property (nonatomic, readonly) AWSS3* s3Manager;
 @property (nonatomic, readonly) NSString* _imageRequestContentType;
 
 -(AWSS3PutObjectRequest*)newImagePutRequestWithImagePath:(NSString*)imagePath;
@@ -185,13 +184,13 @@ NSString* const kRACAmazonController_NotificationName_UploadImageRequest_DidFail
     });
 }
 
--(NSURL*)imageURLForImagePath:(NSString*)imagePath
+-(AWSS3GetObjectRequest*)getImageRequestForImagePath:(NSString*)imagePath
 {
 	AWSS3GetObjectRequest* request = [AWSS3GetObjectRequest new];
 	[request setBucket:self.bucketName];
 	[request setKey:imagePath];
 
-	return request.downloadingFileURL;
+	return request;
 }
 
 #pragma mark - Getter method

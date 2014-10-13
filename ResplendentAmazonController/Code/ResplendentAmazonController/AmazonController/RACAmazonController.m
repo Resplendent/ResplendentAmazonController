@@ -10,12 +10,16 @@
 
 #import "RUConstants.h"
 #import "RUDLog.h"
+#import "RUClassOrNilUtil.h"
+
+#import "AWSS3Model.h"
 
 
 
 
 
-static dispatch_queue_t __imageToDataQueue;
+NSString* const kRACAmazonController_NotificationName_UploadImageRequest_DidFinish = @"kRACAmazonController_NotificationName_UploadImageRequest_DidFinish";
+NSString* const kRACAmazonController_NotificationName_UploadImageRequest_DidFail = @"kRACAmazonController_NotificationName_UploadImageRequest_DidFail";
 
 
 
@@ -23,7 +27,13 @@ static dispatch_queue_t __imageToDataQueue;
 
 @interface RACAmazonController ()
 
+@property (nonatomic, readonly) NSOperationQueue* imageToDataOperationQueue;
+
 @property (nonatomic, readonly) NSString* _imageRequestContentType;
+
+-(AWSS3PutObjectRequest*)newImagePutRequestWithImagePath:(NSString*)imagePath;
+-(void)convertImageToData:(UIImage*)image sendWithRequest:(AWSS3PutObjectRequest *)request;
+-(void)applyImageData:(NSData*)imageData toRequestAndSend:(AWSS3PutObjectRequest *)request;
 
 @end
 
@@ -33,19 +43,28 @@ static dispatch_queue_t __imageToDataQueue;
 
 @implementation RACAmazonController
 
-+(void)initialize
-{
-    if (self == [RACAmazonController class])
-    {
-        __imageToDataQueue = dispatch_queue_create("RUAmazonController.ImageToDataQueue", 0);
-    }
-}
+//+(void)initialize
+//{
+//    if (self == [RACAmazonController class])
+//    {
+//        __imageToDataQueue = dispatch_queue_create("RUAmazonController.ImageToDataQueue", 0);
+//    }
+//}
 
 -(id)init
 {
     if (self = [super init])
     {
-        _amazonS3Client = [[AmazonS3Client alloc] initWithAccessKey:self.accessKey withSecretKey:self.secretKey];
+		_imageToDataOperationQueue = [NSOperationQueue new];
+
+		AWSStaticCredentialsProvider *credentialsProvider = [AWSStaticCredentialsProvider credentialsWithAccessKey:self.accessKey secretKey:self.secretKey];
+		AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1 credentialsProvider:credentialsProvider];
+		[AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+
+		_s3Manager = [[AWSS3 alloc] initWithConfiguration:configuration];
+
+
+//        _amazonS3Client = [[AmazonS3Client alloc] initWithAccessKey:self.accessKey withSecretKey:self.secretKey];
 
         //If you want to create the bucket
 //        [_amazonS3Client createBucket:[[S3CreateBucketRequest alloc] initWithName:self.bucketName]];
@@ -54,60 +73,124 @@ static dispatch_queue_t __imageToDataQueue;
     return self;
 }
 
--(S3PutObjectRequest*)newImagePutRequestWithImageName:(NSString*)imageName
+-(AWSS3PutObjectRequest*)newImagePutRequestWithImagePath:(NSString*)imagePath
 {
-    S3PutObjectRequest* request = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:self.bucketName];
-    [request setContentType:self._imageRequestContentType];
-    [request setDelegate:self];
-    return request;
+	AWSS3PutObjectRequest* uploadRequest = [AWSS3PutObjectRequest new];
+	[uploadRequest setKey:imagePath];
+	[uploadRequest setContentType:self._imageRequestContentType];
+	[uploadRequest setBucket:self.bucketName];
+	return uploadRequest;
 }
 
--(S3PutObjectRequest*)uploadImage:(UIImage*)image imageName:(NSString*)imageName
+-(AWSS3PutObjectRequest*)uploadImage:(UIImage*)image imagePath:(NSString *)imagePath
 {
-    S3PutObjectRequest* request = [self newImagePutRequestWithImageName:imageName];
+    AWSS3PutObjectRequest* request = [self newImagePutRequestWithImagePath:imagePath];
 
-    [self sendRequest:request withCurrentSettingsAppliedToImage:image];
-
-    return request;
-}
-
--(void)sendRequest:(S3PutObjectRequest *)request withCurrentSettingsAppliedToImage:(UIImage*)image
-{
-    dispatch_async(__imageToDataQueue, ^{
-        [request setData:UIImagePNGRepresentation(image)];
-        [self sendRequest:request];
-    });
-}
-
--(S3PutObjectRequest*)uploadImageWithData:(NSData*)imageData imageName:(NSString*)imageName
-{
-    S3PutObjectRequest* request = [self newImagePutRequestWithImageName:imageName];
-    [request setData:imageData];
-    [self sendRequest:request];
+	[self convertImageToData:image sendWithRequest:request];
 
     return request;
 }
 
--(void)sendRequest:(S3PutObjectRequest*)request
+-(void)convertImageToData:(UIImage*)image sendWithRequest:(AWSS3PutObjectRequest *)request
 {
+	if (image == nil)
+	{
+		NSAssert(FALSE, @"Must pass an image");
+		return;
+	}
+
+	NSBlockOperation* operation = [NSBlockOperation blockOperationWithBlock:^{
+		@autoreleasepool {
+
+			if (operation.isCancelled)
+			{
+				return;
+			}
+			
+			NSData* imageData = UIImagePNGRepresentation(image);
+			
+			if (operation.isCancelled)
+			{
+				return;
+			}
+
+			[self applyImageData:imageData toRequestAndSend:request];
+
+		}
+	}];
+
+	[self.imageToDataOperationQueue addOperation:operation];
+}
+
+-(void)applyImageData:(NSData *)imageData toRequestAndSend:(AWSS3PutObjectRequest *)request
+{
+	[request setBody:imageData];
+	[request setContentLength:@(imageData.length)];
+
+	[self sendRequest:request];
+}
+
+-(AWSS3PutObjectRequest*)uploadImageWithData:(NSData *)imageData imagePath:(NSString *)imagePath
+{
+    AWSS3PutObjectRequest* request = [self newImagePutRequestWithImagePath:imagePath];
+
+	[self applyImageData:imageData toRequestAndSend:request];
+
+    return request;
+}
+
+-(void)sendRequest:(AWSS3PutObjectRequest *)request
+{
+	if (request.body == nil)
+	{
+		NSAssert(FALSE, @"Must have a body");
+		return;
+	}
+	
+	if (!kRUClassOrNil(request.body, NSData))
+	{
+		NSAssert(FALSE, @"Body must be data");
+		return;
+	}
+	
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_amazonS3Client putObject:request];
+
+		[[self.s3Manager putObject:request] continueWithBlock:^id(BFTask *task) {
+
+			if (task.isCancelled)
+			{
+				return nil;
+			}
+
+			if (task.isCompleted == false)
+			{
+				NSAssert(false, @"task should have completed");
+				return nil;
+			}
+
+			if (task.error)
+			{
+				[[NSNotificationCenter defaultCenter]postNotificationName:kRACAmazonController_NotificationName_UploadImageRequest_DidFail object:request userInfo:@{NSUnderlyingErrorKey: task.error}];
+			}
+			else
+			{
+				[[NSNotificationCenter defaultCenter]postNotificationName:kRACAmazonController_NotificationName_UploadImageRequest_DidFinish object:request];
+			}
+
+			return nil;
+
+		}];
+
     });
 }
 
--(NSURL*)imageURLForImageName:(NSString*)imageName
+-(AWSS3GetObjectRequest*)getImageRequestForImagePath:(NSString*)imagePath
 {
-    S3GetPreSignedURLRequest *gpsur = [S3GetPreSignedURLRequest new];
-    gpsur.key     = imageName;
-    gpsur.bucket  = self.bucketName;
-    gpsur.expires = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval) 3600];  // Added an hour's worth of seconds to the current time.
+	AWSS3GetObjectRequest* request = [AWSS3GetObjectRequest new];
+	[request setBucket:self.bucketName];
+	[request setKey:imagePath];
 
-    S3ResponseHeaderOverrides *override = [S3ResponseHeaderOverrides new];
-    [override setContentType:self._imageRequestContentType];
-    gpsur.responseHeaderOverrides = override;
-
-    NSURL* url = [_amazonS3Client getPreSignedURL:gpsur];
-    return url;
+	return request;
 }
 
 #pragma mark - Getter method
@@ -126,30 +209,22 @@ static dispatch_queue_t __imageToDataQueue;
     RU_METHOD_OVERLOADED_IMPLEMENTATION_NEEDED_EXCEPTION;
 }
 
-#pragma mark - AmazonServiceRequestDelegate methods
--(void)request:(AmazonServiceRequest *)request didCompleteWithResponse:(AmazonServiceResponse *)response
-{
-    RUDLog(@"finished uploading image with response %@ body %@",response,response.body);
-    [self.delegate amazonController:self didFinishWithResponse:response];
-}
-
--(void)request:(AmazonServiceRequest *)request didFailWithError:(NSError *)error
-{
-    [self.delegate amazonController:self didFailWithError:error];
-}
-
 #pragma mark - imageRequestContentType
 -(NSString *)_imageRequestContentType
 {
     NSString* imageRequestContentType = self.imageRequestContentType;
-    if (imageRequestContentType.length)
-    {
-        return imageRequestContentType;
-    }
-    else
-    {
-        return @"image/png";
-    }
+	return (imageRequestContentType.length ? imageRequestContentType : @"image/png");
 }
+
+@end
+
+
+
+
+
+@implementation NSObject (RACAmazonControllerNotifications)
+
+kRUNotifications_Synthesize_NotificationGetterSetterNumberFromPrimative_Implementation_AssociatedKey(r,R,egisteredForNotification_RACAmazonController_UploadImageRequest_DidFinish, kRACAmazonController_NotificationName_UploadImageRequest_DidFinish, nil);
+kRUNotifications_Synthesize_NotificationGetterSetterNumberFromPrimative_Implementation_AssociatedKey(r,R,egisteredForNotification_RACAmazonController_UploadImageRequest_DidFail, kRACAmazonController_NotificationName_UploadImageRequest_DidFail, nil);
 
 @end
